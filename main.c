@@ -7,6 +7,9 @@ char* newString(){
     char* String = (char*)malloc(sizeof(char));
     *String = '\0';
     char a = getchar();
+    while (a != EOF && (a == ' ' || a == '\n')) {
+        a = getchar();
+    }
     while(a != EOF && a != ' ' && a != '\n'){
         int length = strlen(String);
         String = realloc(String, length + 2);
@@ -21,7 +24,6 @@ char* newString(){
     return String;
 }
 
-
 int main(){
 
     StrList* newList = StrList_alloc();
@@ -31,7 +33,10 @@ int main(){
     int index;
 
     while (func != 0){
-        scanf("%d", &func);
+        if(scanf("%d", &func)!= 1){
+                printf("error with func");
+                break;
+            }
         if(func == 1){
             if(scanf("%d", &num) != 1){
                 printf("error");
