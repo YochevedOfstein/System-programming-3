@@ -182,20 +182,15 @@ void StrList_remove(StrList* StrList, const char* data){
             if(previous == NULL){
                 StrList->_head = current->_next;
                 free(current);
-                StrList->_size = StrList->_size -1; 
                 current = StrList->_head;
-            }
-            if(current->_next == NULL){
-                free(current);
-                StrList->_size = StrList->_size -1; 
-                break;
             }
             else{
                 previous->_next = current->_next;
                 free(current);
-                StrList->_size = StrList->_size -1; 
                 current = previous->_next;
             }
+            
+            StrList->_size = StrList->_size -1; 
         }
         else{
             previous = current;

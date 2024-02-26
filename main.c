@@ -3,8 +3,7 @@
 #include "StrList.h"
 #include <string.h>
 
-
-char* inputString(){
+char* newString(){
     char* String = (char*)malloc(sizeof(char));
     *String = '\0';
     char a = getchar();
@@ -22,6 +21,7 @@ char* inputString(){
     return String;
 }
 
+
 int main(){
 
     StrList* newList = StrList_alloc();
@@ -38,12 +38,7 @@ int main(){
                 break;
             }
             for(int i = 0; i < num; i++){
-                char* String = inputString();
-                if (scanf("%s", String) != 1){
-                    printf("error");
-                    break;
-                }
-                    
+                char* String = newString();   
                 StrList_insertLast(newList, String);
             }
         }
@@ -52,11 +47,7 @@ int main(){
                 printf("error");
                 break;  
             }
-            char* String = inputString();
-            if(scanf("%s", String) != 1){
-                printf("error");
-                break; 
-            }
+            char* String = newString();
             StrList_insertAt(newList, String, index);
         }
         else if(func == 3){
@@ -78,20 +69,11 @@ int main(){
             printf("%d\n", numOfChar);
         }
         else if(func == 7){
-            char* String = inputString();
-            if(scanf("%s", String) != 1){
-                printf("error");
-                break; 
-            }
+            char* String = newString();
             printf("%d\n", StrList_count(newList, String));
         }
         else if(func == 8){
-            getchar();
-            char* String = inputString();
-            if(scanf("%s", String) != 1){
-                printf("error");
-                break; 
-            }
+            char* String = newString();
             StrList_remove(newList, String);
         }
         else if(func == 9){
